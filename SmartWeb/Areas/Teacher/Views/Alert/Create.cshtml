@@ -1,0 +1,115 @@
+﻿@model TblAlert
+<!--begin::Subheader-->
+<div class="subheader py-2 py-lg-12 subheader-transparent" id="kt_subheader">
+    <div class="container d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+        <!--begin::Info-->
+        <div class="d-flex align-items-center flex-wrap mr-1">
+            <!--begin::Heading-->
+            <div class="d-flex flex-column">
+                <!--begin::Title-->
+                <h2 class="text-white font-weight-bold my-2 mr-5">التنبيهات</h2>
+                <!--end::Title-->
+                <!--begin::Breadcrumb-->
+                <div class="d-flex align-items-center font-weight-bold my-2">
+                    <!--begin::Item-->
+                    <a href="#" class="opacity-75 hover-opacity-100">
+                        <i class="flaticon2-shelter text-white icon-1x"></i>
+                    </a>
+                    <!--end::Item-->
+                    <!--begin::Item-->
+                    <span class="label label-dot label-sm bg-white opacity-75 mx-3"></span>
+                    <a asp-area="Teacher" asp-controller="Home" asp-action="Index" class="text-white text-hover-white opacity-75 hover-opacity-100">الرئيسية</a>
+                    <!--end::Item-->
+                    <!--begin::Item-->
+                    <span class="label label-dot label-sm bg-white opacity-75 mx-3"></span>
+                    <a asp-area="Teacher" asp-controller="Alert" asp-action="Index" class="text-white text-hover-white opacity-75 hover-opacity-100">التنبيهات</a>
+                    <!--end::Item-->
+                </div>
+                <!--end::Breadcrumb-->
+            </div>
+            <!--end::Heading-->
+        </div>
+        <!--end::Info-->
+    </div>
+</div>
+<!--end::Subheader-->
+<!--begin::Entry-->
+<div class="d-flex flex-column-fluid">
+    <!--begin::Container-->
+    <div class="container">
+        @if (ViewBag.Error == "error")
+        {
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="alert alert-custom alert-notice alert-light-danger fade show" role="alert">
+                        <div class="alert-icon"><i class="flaticon-cancel"></i></div>
+                        <span class="alert-text">@ViewBag.Message</span>
+                        <div class="alert-close">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true"><i class="ki ki-close"></i></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+        else
+        {
+            <!--begin::Card-->
+            <div class="card card-custom">
+                <!--begin::Form-->
+                <form asp-area="Teacher" asp-controller="Alert" asp-action="Create" method="post" class="form" id="kt_Upsert">
+                    <div class="card-header">
+                        <h3 class="card-title">إضافة تنبيه جديدة</h3>
+                    </div>
+                    <div class="card-body">
+                        <!--begin::Group-->
+                        <div class="form-group">
+                            <label class="col-form-label text-lg-right text-left">
+                                الصف الدراسى
+                                <span class="text-danger">*</span>
+                            </label>
+                            <select asp-for="StageID" name="StageID" class="form-control" data-size="7" data-live-search="true">
+                                <option value="الصف الاول">الصف الاول</option>
+                                <option value="الصف الثانى">الصف الثانى</option>
+                            </select>
+                        </div>
+                        <!--end::Group-->
+                        <!--begin::Group-->
+                        <div class="form-group">
+                            <label class="col-form-label text-lg-right text-left">
+                                إسم التنبيه
+                                <span class="text-danger">*</span>
+                            </label>
+                            <input asp-for="AlertName" name="AlertName" class="form-control" type="text" autofocus />
+                        </div>
+                        <!--end::Group-->
+                        <!--begin::Group-->
+                        <div class="form-group row">
+                            <label class="col-form-label col-lg-3 col-sm-12 text-lg-right">Multiple File Upload</label>
+                            <div class="col-lg-4 col-md-9 col-sm-12">
+                                <div class="dropzone dropzone-default dropzone-primary" id="kt_dropzone_2">
+                                    <div class="dropzone-msg dz-message needsclick">
+                                        <h3 class="dropzone-msg-title">Drop files here or click to upload.</h3>
+                                        <span class="dropzone-msg-desc">Upload up to 10 files</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--end::Group-->
+                    </div>
+                    <div class="card-footer text-center">
+                        <partial name="_CreateAndCancelButton" />
+                    </div>
+                </form>
+                <!--end::Form-->
+            </div>
+            <!--end::Card-->
+        }
+    </div>
+    <!--end::Container-->
+</div>
+<!--end::Entry-->
+@section Scripts{
+    <script src="~/js/Alert_Upsert.js"></script>
+}

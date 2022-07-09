@@ -1,0 +1,118 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using SmartWeb.Models
+@using SmartWeb.Repository.IRepository
+<!DOCTYPE html>
+<html lang="en" dir="rtl">
+<head>
+    <!-- meta tag -->
+    <meta charset="utf-8">
+    <title>test</title>
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1024">
+    <meta property="og:image:height" content="1024">
+    <!-- responsive tag -->
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- favicon -->
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="~/favicon.ico">
+    <!-- Bootstrap v4.4.1 css -->
+    <link href="~/assetsstudent/css/bootstrap.rtl.min.css" rel="stylesheet" />
+    <!-- font-awesome css -->
+    <link rel="stylesheet" type="text/css" href="~/assetsstudent/css/font-awesome.min.css">
+    <!-- animate css -->
+    <link rel="stylesheet" type="text/css" href="~/assetsstudent/css/animate.css">
+    <!-- owl.carousel css -->
+    <link rel="stylesheet" type="text/css" href="~/assetsstudent/css/owl.carousel.css">
+    <!-- slick css -->
+    <link rel="stylesheet" type="text/css" href="~/assetsstudent/css/slick.css">
+    <!-- off canvas css -->
+    <link rel="stylesheet" type="text/css" href="~/assetsstudent/css/off-canvas.css">
+    <!-- linea-font css -->
+    <link rel="stylesheet" type="text/css" href="~/assetsstudent/fonts/linea-fonts.css">
+    <!-- flaticon css  -->
+    <link rel="stylesheet" type="text/css" href="~/assetsstudent/fonts/flaticon.css">
+    <!-- magnific popup css -->
+    <link rel="stylesheet" type="text/css" href="~/assetsstudent/css/magnific-popup.css">
+    <!-- Main Menu css -->
+    <link rel="stylesheet" href="~/assetsstudent/css/rsmenu-main.css">
+    <!-- spacing css -->
+    <link rel="stylesheet" type="text/css" href="~/assetsstudent/css/rs-spacing.css">
+    <!-- style css -->
+    <link rel="stylesheet" type="text/css" href="~/assetsstudent/style.css"> <!-- This stylesheet dynamically changed from style.less -->
+    <!-- responsive css -->
+    <link rel="stylesheet" type="text/css" href="~/assetsstudent/css/responsive.css">
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    @await RenderSectionAsync("CSS", required: false)
+</head>
+<body class="defult-home">
+
+    <!--Preloader area start here-->
+    <div id="loader" class="loader blue-color">
+        <div class="loader-container">
+            <div class='loader-icon'>
+                <img src="~/pre-logo.png" alt="">
+            </div>
+        </div>
+    </div>
+    <!--Preloader area End here-->
+    <!-- Main content Start -->
+    <div class="main-content">
+        <!--Full width header Start-->
+        <div class="full-width-header home8-style4 main-home home13">
+        </div>
+        <!--Full width header End-->
+        @RenderBody()
+        <!-- Main content End -->
+        <!-- Footer Start -->
+        <!-- Footer End -->
+        <!-- start scrollUp  -->
+        <div id="scrollUp">
+            <i class="fa fa-angle-up"></i>
+        </div>
+        <!-- End scrollUp  -->
+        <!-- modernizr js -->
+        <script src="~/assetsstudent/js/modernizr-2.8.3.min.js"></script>
+        <!-- jquery latest version -->
+        <script src="~/assetsstudent/js/jquery.min.js"></script>
+        <!-- Bootstrap v4.4.1 js -->
+        <script src="~/assetsstudent/js/bootstrap.min.js"></script>
+        <script src="~/assetsstudent/js/bootstrap.bundle.min.js"></script>
+        <!-- Menu js -->
+        <script src="~/assetsstudent/js/rsmenu-main.js"></script>
+        <!-- op nav js -->
+        <script src="~/assetsstudent/js/jquery.nav.js"></script>
+        <!-- owl.carousel js -->
+        <script src="~/assetsstudent/js/owl.carousel.min.js"></script>
+        <!-- Slick js -->
+        <script src="~/assetsstudent/js/slick.min.js"></script>
+        <!-- isotope.pkgd.min js -->
+        <script src="~/assetsstudent/js/isotope.pkgd.min.js"></script>
+        <!-- imagesloaded.pkgd.min js -->
+        <script src="~/assetsstudent/js/imagesloaded.pkgd.min.js"></script>
+        <!-- wow js -->
+        <script src="~/assetsstudent/js/wow.min.js"></script>
+        <!-- Skill bar js -->
+        <script src="~/assetsstudent/js/skill.bars.jquery.js"></script>
+        <script src="~/assetsstudent/js/jquery.counterup.min.js"></script>
+        <!-- counter top js -->
+        <script src="~/assetsstudent/js/waypoints.min.js"></script>
+        <!-- video js -->
+        <script src="~/assetsstudent/js/jquery.mb.YTPlayer.min.js"></script>
+        <!-- magnific popup js -->
+        <script src="~/assetsstudent/js/jquery.magnific-popup.min.js"></script>
+        <!-- plugins js -->
+        <script src="~/assetsstudent/js/plugins.js"></script>
+        <!-- contact form js -->
+        <script src="~/assetsstudent/js/contact.form.js"></script>
+        <!-- main js -->
+        <script src="~/assetsstudent/js/main.js"></script>
+
+        @await RenderSectionAsync("Scripts", required: false)
+
+    </div>
+</body>
+</html>

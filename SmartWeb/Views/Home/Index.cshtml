@@ -1,0 +1,50 @@
+﻿@model LoginModel
+<!-- Main content Start -->
+<div class="main-content">
+    <!-- Breadcrumbs Start -->
+    <div class="rs-breadcrumbs breadcrumbs-overlay">
+        <div class="breadcrumbs-img">
+            <img src="~/assetsstudent/images/breadcrumbs/2.jpg" alt="Breadcrumbs Image">
+        </div>
+        <div class="breadcrumbs-text white-color mt-30">
+            <h2 class="title wow fadeInLeft" style="color: #a74836" data-wow-delay="600ms" data-wow-duration="2000ms">
+                Login
+            </h2>
+        </div>
+    </div>
+    <!-- Breadcrumbs End -->
+    <!-- My Account Section Start -->
+    <div class="rs-login dark-red pt-100 pb-100 md-pt-70 md-pb-70">
+        <div class="container">
+            <div class="noticed">
+                <div class="main-part">
+                    <div class="method-account">
+                        <form asp-area="" asp-controller="Home" asp-action="Login" method="post">
+                            @if (ViewBag.Error == "error")
+                            {
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    <strong>خطأ ! </strong> @ViewBag.Message
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                            }
+                            <input asp-for="PhoneNumber" class="text-center" type="tel" placeholder="phone number" />
+                            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                            <input asp-for="Password" class="text-center" type="password" placeholder="password" />
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                            <button type="submit" class="readon submit-btn">login</button>
+                            <div class="last-password">
+                                <a href="/Home/Register">create</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- My Account Section End -->
+</div>
+<!-- Main content End -->
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

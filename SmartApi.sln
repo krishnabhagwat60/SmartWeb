@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31005.135
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmartWeb", "SmartWeb\SmartWeb.csproj", "{0CE42EFF-73C6-4BE7-BA85-F5716B3935CA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0CE42EFF-73C6-4BE7-BA85-F5716B3935CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0CE42EFF-73C6-4BE7-BA85-F5716B3935CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0CE42EFF-73C6-4BE7-BA85-F5716B3935CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0CE42EFF-73C6-4BE7-BA85-F5716B3935CA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1784B752-2DBA-40C1-AE5D-0A54783734AC}
+	EndGlobalSection
+EndGlobal
