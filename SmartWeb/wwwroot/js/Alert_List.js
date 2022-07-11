@@ -6,13 +6,13 @@ $(document).ready(function () {
 
 
 function loadDataTable() {
-    var id = $("#StageID").val();
+    //var id = $("#StageID").val();
     table = $('#kt_datatable1').DataTable({
         responsive: true,
         processing: true,
         "ajax": {
-            "url": "/Teacher/Alert/GetAlert?StageID=" + id
-        },  
+            "url": "/Teacher/Alert/GetAlert?StageID=2"
+        },
         "language": {
             "search": "البحث ",
             "emptyTable": "لا توجد بيانات",
@@ -36,26 +36,11 @@ function loadDataTable() {
             header: true
         },
         columnDefs: [
-            { targets: [0, 2], orderable: false, searchable: false },
-            { targets: [1], className: "h6" },
-            { targets: [0, 2], className: "text-center h6" }
+            { targets: [0, 1], className: "text-center h6" }
         ],
         "columns": [
             { "data": null },
-            { "data": "alertName" },
-            {
-                "data": "alertID",
-                "render": function (data) {
-                    return `
-                                <a onclick=Delete("/Teacher/Alert/Delete/${data}") style="cursor:pointer">
-                                    <i class="icon-2x text-danger flaticon-delete"></i> 
-                                </a>
-                                <a href="/Teacher/Alert/Edit/${data}" class="mr-5" style="cursor:pointer">
-                                    <i class="icon-2x text-info flaticon-edit-1"></i> 
-                                </a>
-                           `;
-                }
-            }
+            { "data": "alertName" }
         ]
     });
 
