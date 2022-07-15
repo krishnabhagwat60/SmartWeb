@@ -13,6 +13,14 @@ using System;
 using SmartWeb.Hubs;
 using DinkToPdf.Contracts;
 using DinkToPdf;
+using tusdotnet.Models;
+using System.IO;
+using tusdotnet.Stores;
+using tusdotnet.Models.Expiration;
+using tusdotnet.Models.Configuration;
+using System.Text;
+using tusdotnet;
+using System.Threading.Tasks;
 
 namespace SmartWeb
 {
@@ -83,7 +91,11 @@ namespace SmartWeb
             //////////context.LoadUnmanagedLibrary(Path.Combine(Directory.GetCurrentDirectory(), "libwkhtmltox.dll"));
             services.AddSingleton(typeof(IConverter), new SynchronizedConverter(new PdfTools()));
             services.AddControllersWithViews();
-
+            services.AddSingleton(CreateTusConfiguration);
+            services.Configure<IISServerOptions>(options =>
+            {
+                options.MaxRequestBodySize = int.MaxValue;
+            });
             services.AddSignalR();
         }
 
@@ -122,6 +134,50 @@ namespace SmartWeb
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapHub<ChatHub>("/chathub");
             });
+            app.UseTus(httpContext => Task.FromResult(httpContext.RequestServices.GetService<DefaultTusConfiguration>()));
         }
+        private DefaultTusConfiguration CreateTusConfiguration(IServiceProvider serviceProvider)
+        {
+            var env = (IWebHostEnvironment)serviceProvider.GetRequiredService(typeof(IWebHostEnvironment));
+
+            //File upload path
+            var tusFiles = Path.Combine(env.WebRootPath, "PAlert");
+
+            return new DefaultTusConfiguration
+            {
+                UrlPath = "/files",
+                //File storage path
+                Store = new TusDiskStore(tusFiles),
+                //Does metadata allow null values
+                MetadataParsingStrategy = MetadataParsingStrategy.AllowEmptyValues,
+                //The file will not be updated after expiration
+                Expiration = new AbsoluteExpiration(TimeSpan.FromMinutes(5)),
+                //Event handling (various events, meet your needs)
+                Events = new Events
+                {
+                    //Upload completion event callback
+                    OnFileCompleteAsync = async ctx =>
+                    {
+                        //Get upload file
+                        var file = await ctx.GetFileAsync();
+
+                        //Get upload file=
+                        var metadatas = await file.GetMetadataAsync(ctx.CancellationToken);
+
+                        //Get the target file name in the above file metadata
+                        var fileNameMetadata = metadatas["name"];
+
+                        //The target file name is encoded in Base64, so it needs to be decoded here
+                        var fileName = fileNameMetadata.GetString(Encoding.UTF8);
+
+                        var extensionName = Path.GetExtension(fileName);
+
+                        //Convert the uploaded file to the actual target file
+                        File.Move(Path.Combine(tusFiles, ctx.FileId), Path.Combine(tusFiles, $"{ctx.FileId}{extensionName}"));
+                    }
+                }
+            };
+        }
+
     }
 }

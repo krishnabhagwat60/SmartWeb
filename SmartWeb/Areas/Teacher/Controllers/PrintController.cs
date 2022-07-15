@@ -1,11 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
+﻿using System;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using SmartWeb.Models;
-using SmartWeb.Repository.IRepository;
-using System;
-using System.Linq;
 
 namespace SmartWeb.Areas.Teacher.Controllers
 {

@@ -12,7 +12,7 @@ function loadDataTable() {
         processing: true,
         "ajax": {
             "url": "/Teacher/Alert/GetAlert?StageID=2"
-        },
+        },  
         "language": {
             "search": "البحث ",
             "emptyTable": "لا توجد بيانات",
@@ -130,5 +130,3 @@ function Delete(url) {
         }
     });
 }
-
-
